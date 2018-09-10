@@ -20,7 +20,7 @@ const CURRENT_APP_VERSION = '26';
 
 app.get('/', function (req, res) {
     res.set('text/html; charset=utf-8');
-    res.send("<script>window.location.replace('https://github.com/Fast0n/iliad');</script>");
+    res.send("<script>window.location.replace('http://areapersonale.mo3bius.com');</script>");
     //https://iliad-api-beta.glitch.me
 });
 
