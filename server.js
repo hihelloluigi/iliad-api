@@ -1655,4 +1655,8 @@ app.get('/donors', function (req, res) {
 
 });
 
-const server = app.listen(process.env.PORT || 3000, function () {});
+app.set('port', process.env.PORT || 3000);
+
+const server = app.listen(app.get('port'), function () {
+      console.log('Server running at port: ' + app.get('port'));
+})
