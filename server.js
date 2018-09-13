@@ -14,7 +14,7 @@ const ILIAD_OPTION_URL = {
     recharge: 'rechargement',
     activation: 'attivazione-della-sim',
     document: 'le-condizioni-della-mia-offerta',
-    recover: 'forget'
+    recover: 'forget',
 }
 const CURRENT_APP_VERSION = '26';
 
@@ -1618,6 +1618,41 @@ app.get('/voicemail', function (req, res) {
         res.sendStatus(400);
     }
 });
+app.get('/store', function (req, res) {
+    res.type('json'); // set Content-Type response
+    var location = req.query.location; 
+
+    var options = {
+        url: "https://www.iliad.it/assets/store-locator/borne_interactive.json",
+        json: true
+    };
+    request(options, function (error, response, body) {
+        if (location){
+            var results = {};
+            var index = 0;
+            body.forEach(element => {
+                if (location.toLowerCase() == element['localite'].toLowerCase() || location == element['cp']){
+                    results[index] = element;
+                    index++;
+                }
+            });
+            res.send(results);
+        } else {
+            res.send(body);
+        }
+    });
+});
+// app.get('/store', function (req, res) {
+//     res.type('json'); // set Content-Type response
+//     console.log("test");
+//     var options = {
+//         url: "https://www.iliad.it/assets/store-locator/borne_interactive.json",
+//         json: true
+//     };
+//     request(options, function (error, response, body) {
+//         res.send(body);
+//     });
+// });
 app.get('/donors', function (req, res) {
     var data_store = {
         'iliad': {}
