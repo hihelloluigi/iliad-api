@@ -2,12 +2,13 @@
   "name": "iliad-api-unofficial",
   "version": "0.0.8",
   "scripts": {
-    "start": "node server.js"
+    "start": "node bin/www"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^0.22.0",
     "express": "^4.16.3",
-    "request": "^2.87.0",
-    "cheerio": "^0.22.0"
+    "request": "^2.87.0"
   },
   "devDependencies": {
     "eslint": "^5.11.0",
